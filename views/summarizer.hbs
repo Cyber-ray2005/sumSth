@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="box form-container">
+        <form method="POST" action="/summarizer">
+            <textarea name="formText" id="inputText" placeholder="Paste in some text to summarize. (Min length is 200 chars. Max length is 100,000 chars.)" maxlength="100000">{{inputText}}</textarea>
+            <button>Submit</button>
+        </form>
+    </div>
+    <div class="box output-container" id="outputBox">
+        {{text}}
+    </div>
+</div>

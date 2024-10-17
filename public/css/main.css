@@ -1,0 +1,144 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info {
+    border-bottom: 1px darkslategray dotted;
+    cursor: pointer;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
+}
+nav div {
+    padding: 2.5px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.navChild {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header img {
+    width: 25px;
+}
+
+.links {
+    display: flex;
+    gap: 15px;
+    flex: 0 0 20%;
+    justify-content: flex-end;
+}
+
+.link-item a {
+    padding: 8px;
+    border-radius: 8px;
+}
+.link-item :hover{
+    background-color: #6643b5;
+}
+
+.bodyDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+    width: 80%;
+}
+
+.box {
+    width: 40%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 10px 8px 8px #6643b5;
+    height: 500px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container form {
+    padding-left: 65px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.form-container textarea {
+    border-radius: 15px;
+    padding: 10px;
+    width: 80%;
+    height: 80%;
+}
+
+button {
+    align-self: flex-end;
+    padding: 10px 20px;
+    border: none;
+    background-color:#6643b5;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a59db6;
+}
+
+.output-container {
+    min-height: 200px;
+    background-color: #f9f9f9;
+}
+
+.contactTable {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 600px;
+    box-shadow: 10px 8px 8px #6643b5;
+}
+
+.contactTable tr th {
+    background-color: #6643b5;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+    padding: 12px 10px;
+}
+.contactTable tr,
+.contactTable td {
+    padding: 12px 15px;
+}
+.contactTable tr {
+    border-bottom: 1px solid #dddddd;
+}
+.contactTable tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+.contactTable tr:last-of-type {
+    border-bottom: 2px solid #6643b5;
+}
