@@ -1,11 +1,26 @@
-<div class="container">
+{{!-- <div class="container">
     <div class="box form-container">
         <form method="POST" action="/summarizer">
-            <textarea name="formText" id="inputText" placeholder="Paste in some text to summarize. (Min length is 200 chars. Max length is 100,000 chars.)" maxlength="100000">{{inputText}}</textarea>
-            <button>Submit</button>
+            <textarea name="formText" id="formText" placeholder="Paste in some text to summarize. (Min length is 200 chars. Max length is 100,000 chars.)" maxlength="100000">{{formText}}</textarea>
+            <button id="submitButton">Submit</button>
         </form>
     </div>
     <div class="box output-container" id="outputBox">
-        {{text}}
+        {{summarizedText}}
+    </div>
+</div> --}}
+
+<div class="container">
+    <div class="box form-container">
+        <form id="summarizerForm" method="POST" action="/summarizer">
+            <textarea name="formText" id="formText" placeholder="Paste in some text to summarize. (Min length is 200 chars. Max length is 100,000 chars.)" maxlength="100000">{{formText}}</textarea>
+            <button id="submitButton" type="submit">
+                Submit
+                <span id="spinner" style="display: none;">🔄</span>
+            </button>
+        </form>
+    </div>
+    <div class="box output-container" id="outputBox">
+        {{summarizedText}}
     </div>
 </div>

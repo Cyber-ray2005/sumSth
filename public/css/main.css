@@ -99,11 +99,33 @@ button {
     align-self: flex-end;
     padding: 10px 20px;
     border: none;
-    background-color:#6643b5;
+    background-color: #6643b5;
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
 }
+
+button:disabled {
+    background-color: gray;
+    opacity: 0.5;
+    cursor: not-allowed; /* Makes the cursor look "disabled" */
+    pointer-events: none; /* Prevents all interactions */
+}
+
+/* Spinner styles */
+#spinner {
+    display: none; /* Initially hidden */
+    margin-left: 10px; /* Space between button text and spinner */
+    animation: spin 1s linear infinite; /* Animation properties */
+}
+
+/* Keyframes for the spinning animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 button:hover {
     background-color: #a59db6;
