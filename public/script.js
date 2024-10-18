@@ -16,9 +16,9 @@ function verifyTextLength(e) {
 
     // Check if it's the textArea or inputText, and set appropriate min length
     if (textarea.id === "formText") {
-        minLength = 200;  // Minimum 200 characters for formText
+        minLength = 200; // Minimum 200 characters for formText
     } else if (textarea.id === "queryText") {
-        minLength = 2;   // Minimum 30 characters for queryText
+        minLength = 2; // Minimum 30 characters for queryText
     }
 
     // Enable or disable the submit button based on the text length

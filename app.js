@@ -68,11 +68,11 @@ app.post('/textToImage', async (req, res) => {
         .then(base64Image => {
             const imageUrl = `data:image/jpeg;base64,${base64Image}`;
             res.render('textToImage', {formText: text, generatedImage: imageUrl});
-        })
+        });
     } catch(error) {
         console.error('Error generating image:', error);
         res.render('textToImage', {
-            formText: formText,
+            formText: text,
             generatedImage: 'Failed to generate image. Please try again later.'
         });
     }
