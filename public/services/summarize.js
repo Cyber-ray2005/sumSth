@@ -29,4 +29,4 @@ async function summarizeText(text) {
     }
 }
 
-export {summarizeText};
+export { summarizeText };

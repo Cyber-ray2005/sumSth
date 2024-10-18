@@ -3,6 +3,7 @@ import path from "path";
 import url from "url";
 import dotenv from 'dotenv';
 import { summarizeText } from "./public/services/summarize.js";
+import { textToImage } from "./public/services/textToImage.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -49,6 +50,30 @@ app.post('/summarizer', async (req, res) => {
         res.render('summarizer', {
             formText: formText,
             summarizedText: 'Failed to generate summary. Please try again later.'
+        });
+    }
+});
+
+app.get('/textToImage', (req, res) => {
+    res.render('textToImage', {});
+});
+
+app.post('/textToImage', async (req, res) => {
+    const text = req.body.queryText;
+    try {
+        textToImage(text)
+        .then(response => {
+            return Buffer.from(response, 'binary').toString('base64');
+        })
+        .then(base64Image => {
+            const imageUrl = `data:image/jpeg;base64,${base64Image}`;
+            res.render('textToImage', {formText: text, generatedImage: imageUrl});
+        })
+    } catch(error) {
+        console.error('Error generating image:', error);
+        res.render('textToImage', {
+            formText: formText,
+            generatedImage: 'Failed to generate image. Please try again later.'
         });
     }
 });

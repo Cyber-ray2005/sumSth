@@ -1,38 +1,60 @@
 const textArea = document.getElementById("formText");
+const inputText = document.getElementById("queryText");
 const submitButton = document.getElementById("submitButton");
+const spinner = document.getElementById("spinner");
 
-submitButton.disabled = true;
+// Disable submit button initially, if present
+if (submitButton) {
+    submitButton.disabled = true;
+}
 
+// Function to verify the length of input based on the element
 function verifyTextLength(e) {
-    // The e.target property gives us the HTML element that triggered the event, which in this case is the textarea. We save this to a variable called 'textarea'
+    console.log("Came here");
     const textarea = e.target;
-    
-    // Verify the TextArea value.
-    if (textarea.value.length > 200 && textarea.value.length < 100000) {
-        // Enable the button when text area has value.
+    let minLength;
+
+    // Check if it's the textArea or inputText, and set appropriate min length
+    if (textarea.id === "formText") {
+        minLength = 200;  // Minimum 200 characters for formText
+    } else if (textarea.id === "queryText") {
+        minLength = 2;   // Minimum 30 characters for queryText
+    }
+
+    // Enable or disable the submit button based on the text length
+    if (textarea.value.length >= minLength && textarea.value.length < 100000) {
         submitButton.disabled = false;
     } else {
-        // Disable the button when text area is empty.
         submitButton.disabled = true;
     }
-    }
-    
-    const spinner = document.getElementById("spinner");
-    async function submitData(e) {
-        // Show the spinner
-        spinner.style.display = "inline-block"; // Show spinner
-    
-        // Prevent default form submission to allow for loading
-        e.preventDefault();
-    
-        // Submit the form manually
-        const form = document.getElementById("summarizerForm");
-        form.submit(); // This will submit the form normally to the server
-    
-        // The spinner will remain visible while waiting for the server response
-        // If the response takes too long, you might consider adding a timeout or loading message
+}
+
+// Function to handle form submission
+async function submitData(e) {
+    // Prevent the default form submission
+    e.preventDefault();
+
+    // Show the spinner, if present
+    if (spinner) {
+        spinner.style.display = "inline-block";
     }
 
-textArea.addEventListener("input", verifyTextLength);
-submitButton.addEventListener("click", submitData);
+    // Submit the form manually
+    const form = document.getElementById("summarizerForm");
+    if (form) {
+        form.submit(); // Submits the form to the server
+    }
+}
 
+// Attach event listeners if the elements exist
+if (textArea) {
+    textArea.addEventListener("input", verifyTextLength);
+}
+
+if (inputText) {
+    inputText.addEventListener("input", verifyTextLength);
+}
+
+if (submitButton) {
+    submitButton.addEventListener("click", submitData);
+}
